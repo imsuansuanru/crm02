@@ -11,4 +11,7 @@ public interface RoleMapper extends BaseMapper<Role, Integer> {
     // 查询所有的角色列表 (只需要id和roleName)
     public List<Map<String,Object>> queryAllRoles(Integer userId);
 
+
+
+    Role queryRoleByRoleName(String roleName);
 }

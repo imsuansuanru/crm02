@@ -120,4 +120,29 @@
     WHERE
       r.is_valid =1
   </select>
+
+  <!-- 分页查询role记录 -->
+  <select id="selectByParams" parameterType="com.xxxx.crm.query.RoleQuery" resultType="com.xxxx.crm.vo.Role">
+    select
+      <include refid="Base_Column_List"/>
+    from
+        t_role
+    <where>
+      is_valid = 1
+      <if test="null != roleName and '' != roleName">
+        and role_name like concat('%',#{roleName},'%')
+      </if>
+    </where>
+  </select>
+
+  <select id="queryRoleByRoleName" parameterType="string" resultType="com.xxxx.crm.vo.Role">
+    select
+        <include refid="Base_Column_List"/>
+    from
+        t_role
+    where
+        is_valid = 1
+    and
+        role_name = #{roleName}
+  </select>
 </mapper>

@@ -35,7 +35,13 @@
       #{isValid,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.xxxx.crm.vo.User">
+
+  <!--
+    useGeneratedKeys:是否需要获取主键，并赋值到useGeneratedKeys属性设置的模型属性（JavaBean）
+    keyProperty:赋值给javabean中哪个属性
+    keyColumn:数据库字段名
+  -->
+  <insert id="insertSelective" parameterType="com.xxxx.crm.vo.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
